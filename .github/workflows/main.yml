@@ -1,0 +1,31 @@
+name:  test qt action
+
+on:
+  push:
+    branches: "main"
+
+jobs:
+  job:
+    name: ${{ github.workflow }}
+    runs-on: windows-2022
+    strategy:
+      fail-fast: true
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: TheMrMilchmann/setup-msvc-dev@v2
+        with:
+          arch: x64
+       
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: '6.4.2'
+          host: 'windows'
+          target: 'desktop'
+          set-env: 'true'
+
+      - name: Configure project on windows
+        run: |
+          qmake
+          nmake
