@@ -9,7 +9,7 @@ android|ios|winrt {
 SOURCES += main.cpp scatterdatamodifier.cpp
 HEADERS += scatterdatamodifier.h
 
-QT += widgets DataVisualization
+QT += widgets datavisualization
 
 RESOURCES += rotations.qrc
 
