@@ -11,4 +11,8 @@ contains(TARGET, qml.*) {
 }
 
 target.path = $$[QT_INSTALL_EXAMPLES]/datavisualization/$$TARGET
+<<<<<<< HEAD
 INSTALLS += target
+=======
+INSTALLS += target
+>>>>>>> ea9c281f479e2990937eaeb910dc3e7bce589507
