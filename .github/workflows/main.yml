@@ -29,6 +29,5 @@ jobs:
 
       - name: Run CMake+vcpkg
         run: |
-          cmake . -B build -DEXECUTABLE_OUTPUT_PATH=target 
-          cd build
-          cmake --build . --config Release
+          qmake 
+          nmake
