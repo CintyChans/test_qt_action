@@ -13,9 +13,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: TheMrMilchmann/setup-msvc-dev@v2
-        with:
-          arch: x64
        
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
@@ -25,7 +22,13 @@ jobs:
           target: 'desktop'
           set-env: 'true'
 
-      - name: Configure project on windows
+      - uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: 3.24.3
+          ninjaVersion:  1.11.1
+
+      - name: Run CMake+vcpkg
         run: |
-          qmake
-          nmake
+          cmake . -B build -DEXECUTABLE_OUTPUT_PATH=target 
+          cd build
+          cmake --build . --config Release
