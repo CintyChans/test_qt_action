@@ -14,10 +14,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
        
+      - name: Add msbuild to PATH
+        uses: seanmiddleditch/gha-setup-vsdevenv@master
+     
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          version: '6.3'
+          version: '6.4.2'
           host: 'windows'
           target: 'desktop'
           set-env: 'true'
