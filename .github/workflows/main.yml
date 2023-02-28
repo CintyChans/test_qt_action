@@ -1,18 +1,21 @@
-name:  test qt action
+name:  test_qt
 
 on:
   push:
-    branches: "main"
+    branches: "test_qt"
 
 jobs:
   job:
     name: ${{ github.workflow }}
-    runs-on: windows-2022
+    runs-on: windows-latest
     strategy:
       fail-fast: true
 
     steps:
       - uses: actions/checkout@v3
+      - uses: TheMrMilchmann/setup-msvc-dev@v2
+        with:
+          arch: x64
        
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
@@ -22,12 +25,20 @@ jobs:
           target: 'desktop'
           set-env: 'true'
 
-      - uses: lukka/get-cmake@latest
-        with:
-          cmakeVersion: 3.24.3
-          ninjaVersion:  1.11.1
-
-      - name: Run CMake+vcpkg
+      - name: Configure  project on windows
         run: |
-          qmake 
-          nmake
+              qmake
+              nmake
+              
+      - name: windeployqt 
+        run: |
+          cd release
+          windeployqt.exe  main.exe  
+      
+        
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-qt
+          path: ./release
