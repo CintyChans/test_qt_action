@@ -2,7 +2,7 @@ name:  test_qt
 
 on:
   push:
-    branches: "test_qt"
+    branches: "main"
 
 jobs:
   job:
