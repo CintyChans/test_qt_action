@@ -29,7 +29,6 @@ jobs:
 
       - name: Configure  project on windows
         run: |
-            cd test
             qmake
             nmake
  
