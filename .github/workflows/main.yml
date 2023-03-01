@@ -13,10 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-       
-      - name: Add msbuild to PATH
-        uses: seanmiddleditch/gha-setup-vsdevenv@master
-     
+          
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
@@ -27,20 +24,22 @@ jobs:
           modules: 'qtdatavis3d'
           cache: 'true'
 
-          
-      - name: Qtest
+      - uses: lukka/get-cmake@latest
+        with:
+          cmakeVersion: 3.24.3
+          ninjaVersion:  1.11.1
+
+
+      - name: Configuration
         run: |
-          cd test
-          qmake
-          nmake
-          cd release
-          windeployqt testqstring.exe
-          
-          
-      - shell: cmd
+          cmake . -B build -DEXECUTABLE_OUTPUT_PATH=target 
+          cd build
+          cmake --build . --config Release
+
+      - name: CTest
         run: |
-          cd test\release
-          testqstring.exe
+          cd build
+          ctest --verbose -C Release -T test --output-on-failure
         
 
      
