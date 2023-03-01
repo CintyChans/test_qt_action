@@ -37,13 +37,6 @@ jobs:
       - name: Qtest
         run:  |
           cd test\release
-          windeployqt testqstring.exe
+          .\testqstring toUpper
           
           
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-qt
-          path: ./test
-    
-
