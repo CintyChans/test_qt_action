@@ -42,5 +42,7 @@ jobs:
           windeployqt testqstring.exe
 
      
-      - run:  ./testqstring 
-          
+      - run: |
+          cd test
+          cd release
+          .\testqstring
