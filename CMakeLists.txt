@@ -24,10 +24,10 @@ qt_add_executable(rotations
     scatterdatamodifier.cpp scatterdatamodifier.h
 )
 
-# set_target_properties(rotations PROPERTIES
-#     WIN32_EXECUTABLE TRUE
-#     MACOSX_BUNDLE TRUE
-# )
+set_target_properties(rotations PROPERTIES
+    WIN32_EXECUTABLE TRUE
+    MACOSX_BUNDLE TRUE
+)
 
 target_link_libraries(rotations PUBLIC
     Qt::Core
@@ -56,6 +56,11 @@ qt6_add_resources(rotations "rotations"
 # )
 
 enable_testing()
-add_executable(test_rotations test_rotations.cpp)
+add_executable(test_rotations test_rotations.cpp scatterdatamodifier.cpp scatterdatamodifier.h)
 add_test(NAME test_rotations COMMAND test_rotations)
-target_link_libraries(test_rotations PRIVATE Qt::Test)
+target_link_libraries(test_rotations PRIVATE 
+    Qt::Test  
+    Qt::Core
+    Qt::Gui
+    Qt::Widgets
+    Qt::DataVisualization)

@@ -1,21 +1,44 @@
-// Copyright (C) 2016 The Qt Company Ltd.
-// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR BSD-3-Clause
-
 
 #include <QTest>
+#include "scatterdatamodifier.h"
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QPushButton>
+#include <QtGui/QScreen>
 
-class TestQString: public QObject
+class TestRotations: public QObject
 {
     Q_OBJECT
 private slots:
-    void toUpper();
+    void toggleSunButton();
 };
 
-void TestQString::toUpper()
+void TestRotations::toggleSunButton()
 {
-    QString str = "Hello";
-    QCOMPARE(str.toUpper(), QString("HELLO"));
+    
+    Q3DScatter *graph = new Q3DScatter();
+    QWidget *container = QWidget::createWindowContainer(graph);
+
+    if (!graph->hasContext())
+    {
+        QMessageBox msgBox;
+        msgBox.setText("Couldn't initialize the OpenGL context.");
+        msgBox.exec();
+        return -1;
+    }
+
+    QWidget *widget = new QWidget;
+    QHBoxLayout *hLayout = new QHBoxLayout(widget);
+    hLayout->addWidget(container, 1);
+    QPushButton *toggleSunButton = new QPushButton(widget);
+    hLayout->addWidget(toggleSunButton);
+    ScatterDataModifier *modifier = new ScatterDataModifier(graph);
+    QObject::connect(toggleSunButton, &QPushButton::clicked, modifier,
+                     &ScatterDataModifier::toggleSun);
+
+
+
 }
 
-QTEST_MAIN(TestQString)
+QTEST_MAIN(TestRotations)
 #include "test_rotations.moc"
