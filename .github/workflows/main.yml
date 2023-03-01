@@ -31,15 +31,9 @@ jobs:
               qmake
               nmake
               
-      - name: windeployqt 
-        run: |
-              cd release
-              windeployqt.exe  main.exe  
-      
-        
-
+ 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: test-qt
-          path: ./release
+          path: .
