@@ -1,31 +1,5 @@
-/****************************************************************************
-**
-** Copyright (C) 2016 The Qt Company Ltd.
-** Contact: https://www.qt.io/licensing/
-**
-** This file is part of the Qt Data Visualization module of the Qt Toolkit.
-**
-** $QT_BEGIN_LICENSE:GPL$
-** Commercial License Usage
-** Licensees holding valid commercial Qt licenses may use this file in
-** accordance with the commercial license agreement provided with the
-** Software or, alternatively, in accordance with the terms contained in
-** a written agreement between you and The Qt Company. For licensing terms
-** and conditions see https://www.qt.io/terms-conditions. For further
-** information use the contact form at https://www.qt.io/contact-us.
-**
-** GNU General Public License Usage
-** Alternatively, this file may be used under the terms of the GNU
-** General Public License version 3 or (at your option) any later version
-** approved by the KDE Free Qt Foundation. The licenses are as published by
-** the Free Software Foundation and appearing in the file LICENSE.GPL3
-** included in the packaging of this file. Please review the following
-** information to ensure the GNU General Public License requirements will
-** be met: https://www.gnu.org/licenses/gpl-3.0.html.
-**
-** $QT_END_LICENSE$
-**
-****************************************************************************/
+// Copyright (C) 2016 The Qt Company Ltd.
+// SPDX-License-Identifier: LicenseRef-Qt-Commercial OR GPL-3.0-only
 
 #include "scatterdatamodifier.h"
 #include <QtDataVisualization/qscatterdataproxy.h>
@@ -36,8 +10,6 @@
 #include <QtDataVisualization/q3dtheme.h>
 #include <QtDataVisualization/QCustom3DItem>
 #include <QtCore/qmath.h>
-
-using namespace QtDataVisualization;
 
 static const float verticalRange = 8.0f;
 static const float horizontalRange = verticalRange;
@@ -116,7 +88,8 @@ void ScatterDataModifier::generateData()
 
     QScatterDataItem *ptrToDataArray = &m_magneticFieldArray->first();
 
-    for (float i = 0; i < m_fieldLines; i++) {
+    for (float i = 0; i < m_fieldLines; i++)
+    {
         float horizontalAngle = (doublePi * i) / m_fieldLines;
         float xCenter = ellipse_a * qCos(horizontalAngle);
         float zCenter = ellipse_a * qSin(horizontalAngle);
@@ -126,7 +99,8 @@ void ScatterDataModifier::generateData()
         QQuaternion yRotation = QQuaternion::fromAxisAndAngle(0.0f, 1.0f, 0.0f, horizontalAngle * radiansToDegrees);
         //! [0]
 
-        for (float j = 0; j < m_arrowsPerLine; j++) {
+        for (float j = 0; j < m_arrowsPerLine; j++)
+        {
             // Calculate point on ellipse centered on origin and parallel to x-axis
             float verticalAngle = ((doublePi * j) / m_arrowsPerLine) + m_angleOffset;
             float xUnrotated = ellipse_a * qCos(verticalAngle);
