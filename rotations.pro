@@ -3,12 +3,9 @@ android|ios|winrt {
 }
 
 
-QT += datavisualization
+QT += widgets datavisualization testlib
 
 SOURCES += main.cpp scatterdatamodifier.cpp
 HEADERS += scatterdatamodifier.h
-
-QT += widgets
-
 
 RESOURCES += rotations.qrc
