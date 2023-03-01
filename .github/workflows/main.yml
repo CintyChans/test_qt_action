@@ -35,7 +35,12 @@ jobs:
           
       - name: Qtest
         run:  |
-          cd test\release
+          cd test
+          qmake
+          nmake
+          cd release
           windeployqt testqstring.exe
-          .\testqstring.exe
+
+     
+      - run:  ./testqstring 
           
