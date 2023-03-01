@@ -33,15 +33,10 @@ jobs:
             qmake
             nmake
  
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-qt
-          path: .            
           
       - name: Qtest
         run:  |
-          cd test
+          cd test\release
           testQString toUpper
 
 
