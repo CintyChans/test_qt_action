@@ -13,4 +13,4 @@ void TestQString::toUpper()
     QCOMPARE(str.toUpper(), QString("HELLO"));
 }
 
-QTEST_MAIN(TestQString)
+
