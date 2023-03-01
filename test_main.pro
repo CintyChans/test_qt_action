@@ -1,4 +1,4 @@
-QT += testlib widgets
+QT += testlib 
 
 SOURCES += test_main.cpp 
 
