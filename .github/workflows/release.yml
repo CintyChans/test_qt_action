@@ -47,7 +47,7 @@ jobs:
       - name: windeployqt 
         run: |
           mkdir target
-          copy .\release\rotations.exe .\target
+          copy .\build\Release\rotations.exe .\target
           cd target
           windeployqt.exe  rotations.exe  
           
