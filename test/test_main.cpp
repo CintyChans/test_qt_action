@@ -6,12 +6,9 @@ class TestQString: public QObject
 private slots:
     void toUpper();
 };
-
 void TestQString::toUpper()
 {
     QString str = "Hello";
-    QCOMPARE(str.toUpper(), QString("HELLO"));
+    QVERIFY(str.toUpper() == "HELLO");
 }
-
-
 QTEST_MAIN(TestQString)
