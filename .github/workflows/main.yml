@@ -24,7 +24,7 @@ jobs:
           host: 'windows'
           target: 'desktop'
           set-env: 'true'
-          modules: 'datavisualization'
+          modules: 'qtdatavis3d'
 
       - name: Configure  project on windows
         run: |
