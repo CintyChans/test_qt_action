@@ -25,9 +25,13 @@ jobs:
           target: 'desktop'
           set-env: 'true'
           modules: 'qtdatavis3d'
+          cache: 'true'
 
       - name: Configure  project on windows
         run: |
+            qmake
+            nmake
+            cd test
             qmake
             nmake
  
