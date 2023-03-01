@@ -7,11 +7,11 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-if(NOT DEFINED INSTALL_EXAMPLESDIR)
-  set(INSTALL_EXAMPLESDIR "examples")
-endif()
+# if(NOT DEFINED INSTALL_EXAMPLESDIR)
+#   set(INSTALL_EXAMPLESDIR "examples")
+# endif()
 
-set(INSTALL_EXAMPLEDIR "${INSTALL_EXAMPLESDIR}")
+# set(INSTALL_EXAMPLEDIR "${INSTALL_EXAMPLESDIR}")
 
 find_package(Qt6 COMPONENTS Core)
 find_package(Qt6 COMPONENTS Gui)
@@ -24,10 +24,10 @@ qt_add_executable(rotations
     scatterdatamodifier.cpp scatterdatamodifier.h
 )
 
-set_target_properties(rotations PROPERTIES
-    WIN32_EXECUTABLE TRUE
-    MACOSX_BUNDLE TRUE
-)
+# set_target_properties(rotations PROPERTIES
+#     WIN32_EXECUTABLE TRUE
+#     MACOSX_BUNDLE TRUE
+# )
 
 target_link_libraries(rotations PUBLIC
     Qt::Core
@@ -49,13 +49,13 @@ qt6_add_resources(rotations "rotations"
         ${rotations_resource_files}
 )
 
-install(TARGETS rotations
-    RUNTIME DESTINATION "${INSTALL_EXAMPLEDIR}"
-    BUNDLE DESTINATION "${INSTALL_EXAMPLEDIR}"
-    LIBRARY DESTINATION "${INSTALL_EXAMPLEDIR}"
-)
+# install(TARGETS rotations
+#     RUNTIME DESTINATION "${INSTALL_EXAMPLEDIR}"
+#     BUNDLE DESTINATION "${INSTALL_EXAMPLEDIR}"
+#     LIBRARY DESTINATION "${INSTALL_EXAMPLEDIR}"
+# )
 
 enable_testing()
-add_executable(testqstring testqstring.cpp)
-add_test(NAME testqstring COMMAND testqstring)
-target_link_libraries(testqstring PRIVATE Qt::Test)
+add_executable(test_rotations test_rotations.cpp)
+add_test(NAME test_rotations COMMAND test_rotations)
+target_link_libraries(test_rotations PRIVATE Qt::Test)
