@@ -7,7 +7,7 @@ on:
 jobs:
   job:
     name: ${{ github.workflow }}
-    runs-on: windows-latest
+    runs-on: windows-2022
     strategy:
       fail-fast: true
 
@@ -32,7 +32,7 @@ jobs:
 
       - name: Configuration
         run: |
-          cmake . -B build -DEXECUTABLE_OUTPUT_PATH=target 
+          cmake . -B build 
           cd build
           cmake --build . --config Release
 
