@@ -28,8 +28,9 @@ jobs:
 
       - name: Configure  project on windows
         run: |
-              qmake
-              nmake
+          cmake . -B build -DEXECUTABLE_OUTPUT_PATH=target 
+          cd build
+          cmake --build . --config Release
               
  
       - name: Upload Artifacts
