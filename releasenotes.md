@@ -1,6 +1,6 @@
 # RELEASE NOTES
 
-## 1.0.3.1
+## v1.0.3.1
 
 - note0
 - note1

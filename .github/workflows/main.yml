@@ -13,33 +13,42 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-          
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v3
-        with:
-          version: '6.4.2'
-          host: 'windows'
-          target: 'desktop'
-          set-env: 'true'
-          modules: 'qtdatavis3d'
-          cache: 'true'
 
-      - uses: lukka/get-cmake@latest
-        with:
-          cmakeVersion: 3.24.3
-          ninjaVersion:  1.11.1
-
-
-      - name: Configuration
+      - name: note
+        shell: python
         run: |
-          cmake . -B build 
-          cd build
-          cmake --build . --config Release
+          import os;f=open('releasenotes.md',"r");obj={i[0].strip():i[1:] for i in [i.split('-') for i in f.read().split('##')[1:]]};f.close()
+          note=[obj[i] for i in obj if i=='${{github.ref_name}}'];note=[note[0] if note else ''][0]
+          os.system("echo 'NOTE<<<<EOF' >> $GITHUB_ENV")
+          tmp=[os.system("echo '{}' >> $GITHUB_ENV".format(n.strip())) for n in note ]
+          os.system("echo 'EOF' >> $GITHUB_ENV")    
+               
+      # - name: Install Qt
+      #   uses: jurplel/install-qt-action@v3
+      #   with:
+      #     version: '6.4.2'
+      #     host: 'windows'
+      #     target: 'desktop'
+      #     set-env: 'true'
+      #     modules: 'qtdatavis3d'
+      #     cache: 'true'
 
-      - name: CTest
-        run: |
-          cd build
-          ctest --verbose -C Release -T test --output-on-failure
+      # - uses: lukka/get-cmake@latest
+      #   with:
+      #     cmakeVersion: 3.24.3
+      #     ninjaVersion:  1.11.1
+
+
+      # - name: Configuration
+      #   run: |
+      #     cmake . -B build 
+      #     cd build
+      #     cmake --build . --config Release
+
+      # - name: CTest
+      #   run: |
+      #     cd build
+      #     ctest --verbose -C Release -T test --output-on-failure
         
 
      
