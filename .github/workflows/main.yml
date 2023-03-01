@@ -42,6 +42,6 @@ jobs:
       - name: Qtest
         run:  |
           cd test
-          test_main TestQString
+          testQString toUpper
 
 
