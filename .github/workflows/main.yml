@@ -38,6 +38,8 @@ jobs:
           path: .            
           
       - name: Qtest
-        run:  test_main TestQString
+        run:  |
+          cd test
+          test_main TestQString
 
 
