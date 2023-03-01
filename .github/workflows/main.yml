@@ -29,12 +29,18 @@ jobs:
 
           
       - name: Qtest
-        run:  |
+        run: |
           cd test
           qmake
           nmake
           cd release
           windeployqt testqstring.exe
+          
+          
+      - run: |
+          cd test
+          cd release
+          ls 
           .\testqstring.exe
 
      
