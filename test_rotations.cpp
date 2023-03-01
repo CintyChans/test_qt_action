@@ -28,7 +28,7 @@ void TestRotations::toggleSunButton()
     QObject::connect(toggleSunButton, &QPushButton::clicked, modifier,
                      &ScatterDataModifier::toggleSun);
 
-    QTest::mouseClick(&widget,toggleSunButton);
+    QTest::mouseClick(widget, Qt::LeftButton, Qt::NoModifier, QPoint(0, 0));
 
 }
 
