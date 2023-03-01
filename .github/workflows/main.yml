@@ -28,13 +28,18 @@ jobs:
 
       - name: Configure  project on windows
         run: |
-          cmake . -B build -DEXECUTABLE_OUTPUT_PATH=target 
-          cd build
-          cmake --build . --config Release
+            qmake
+            nmake
               
- 
+      - name: windeployqt 
+        run: |
+              mkdir target
+              copy ./release/rotations.exe  ./target 
+              cd target
+              windeployqt  rotations.exe  
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: test-qt
-          path: .
+          path: ./target
