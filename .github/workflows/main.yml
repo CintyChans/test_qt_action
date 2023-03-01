@@ -27,11 +27,6 @@ jobs:
           modules: 'qtdatavis3d'
           cache: 'true'
 
-      - name: Configure  project on windows
-        run: |
-            qmake
-            nmake
- 
           
       - name: Qtest
         run:  |
@@ -40,9 +35,6 @@ jobs:
           nmake
           cd release
           windeployqt testqstring.exe
+          .\testqstring.exe
 
      
-      - run: |
-          cd test
-          cd release
-          .\testqstring
