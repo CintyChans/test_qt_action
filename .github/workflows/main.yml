@@ -37,6 +37,5 @@ jobs:
         run:  |
           cd test\release
           windeployqt testqstring.exe
-          .\testqstring toUpper
-          
+          .\testqstring.exe
           
