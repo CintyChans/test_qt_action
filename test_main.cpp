@@ -14,3 +14,4 @@ void TestQString::toUpper()
 }
 
 
+QTEST_MAIN(TestQString)
