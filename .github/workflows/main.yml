@@ -38,6 +38,6 @@ jobs:
           path: .            
           
       - name: Qtest
-        run:  testQString toUpper
+        run:  test_main TestQString
 
 
