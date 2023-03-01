@@ -19,7 +19,7 @@ find_package(Qt6 COMPONENTS Widgets)
 find_package(Qt6 COMPONENTS DataVisualization)
 find_package(Qt6  COMPONENTS Test)
 
-add_executable(rotations
+qt_add_executable(rotations
     main.cpp
     scatterdatamodifier.cpp scatterdatamodifier.h
 )
@@ -42,7 +42,7 @@ set(rotations_resource_files
 )
 
 
-add_resources(rotations "rotations"
+qt6_add_resources(rotations "rotations"
     PREFIX
         "/"
     FILES
