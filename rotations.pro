@@ -10,4 +10,4 @@ HEADERS += scatterdatamodifier.h
 
 RESOURCES += rotations.qrc
 
-SUBDIRS += $$PWD/test/testqstring.pro
+SUBDIRS += ./test/testqstring.pro
